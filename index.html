@@ -34,20 +34,22 @@ button{
 <button onclick="playSE('dead')">死亡</button>
 
 <script>
-// ===== ここにSE置くだけ =====
-const SE = {
-  ok:     new Audio('se/ok.wav'),
-  cancel: new Audio('se/cancel.wav'),
-  jump:   new Audio('se/jump.wav'),
-  damage: new Audio('se/damage.wav'),
-  coin:   new Audio('se/coin.wav'),
-  dead:   new Audio('se/dead.wav')
+const SE_PATHS = {
+  ok: 'se/ok.wav',
+  cancel: 'se/cancel.wav',
+  jump: 'se/jump.wav',
+  damage: 'se/damage.wav',
+  coin: 'se/coin.wav',
+  dead: 'se/dead.wav'
 };
 
 function playSE(name){
-  const s = SE[name];
-  if(!s) return;
-  s.currentTime = 0;
+  const path = SE_PATHS[name];
+  if(!path) return;
+
+  const s = new Audio(path);
+  s.preload = 'auto';
+  s.volume = 1.0;
   s.play();
 }
 </script>
