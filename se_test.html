@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SE TEST</title>
+
+<style>
+body{
+  background:#000;
+  color:#fff;
+  font-family:sans-serif;
+  text-align:center;
+}
+button{
+  font-size:20px;
+  margin:8px;
+  padding:12px 18px;
+}
+</style>
+</head>
+
+<body>
+
+<h2>SE TEST</h2>
+
+<button onclick="playSE('ok')">決定</button>
+<button onclick="playSE('cancel')">キャンセル</button><br>
+
+<button onclick="playSE('jump')">ジャンプ</button>
+<button onclick="playSE('damage')">被弾</button><br>
+
+<button onclick="playSE('coin')">コイン</button>
+<button onclick="playSE('dead')">死亡</button>
+
+<script>
+// ===== ここにSE置くだけ =====
+const SE = {
+  ok:     new Audio('se/ok.wav'),
+  cancel: new Audio('se/cancel.wav'),
+  jump:   new Audio('se/jump.wav'),
+  damage: new Audio('se/damage.wav'),
+  coin:   new Audio('se/coin.wav'),
+  dead:   new Audio('se/dead.wav')
+};
+
+function playSE(name){
+  const s = SE[name];
+  if(!s) return;
+  s.currentTime = 0;
+  s.play();
+}
+</script>
+
+</body>
+</html>
